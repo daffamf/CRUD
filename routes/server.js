@@ -4,7 +4,7 @@ var router = express.Router();
 
 module.exports = function (pool) {
 
-router.get('/', (req, res) => {
+router.get('/server/index', (req, res) => {
         var sql = "SELECT * FROM karyawan";
         pool.query(sql, (err, result) => {
             if (err) {
