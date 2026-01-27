@@ -46,8 +46,8 @@ input, select {
 </head>
 <div class="container">
   <h2>JSON CRUD (Create, Read, Update, Delete)</h2>
+<a href="/add">
 
-  <a href="/add">
     <button class="btn-create">Create</button>
   </a>
 
@@ -64,19 +64,41 @@ input, select {
       </tr>
     </thead>
     <tbody>
+   <tbody>
+ 
+  
+ 
+   <tbody>
+    <% if (karyawan && karyawan.length > 0) { %>
+      <% karyawan.forEach((k, index) => { %>
+        <tr>
+          <td><%= index + 1 %></td>
+          <td><%= k.name %></td>
+          <td><%= k.height %></td>
+          <td><%= k.weight %></td>
+          <td><%= 
+    String(new Date(k.birthdate).getDate()).padStart(2, '0') + '-' +
+    String(new Date(k.birthdate).getMonth() + 1).padStart(2, '0') + '-' +
+    String(new Date(k.birthdate).getFullYear()).slice(-2)
+  %></td>
+          <td><%= k.married %></td>
+          <td>
+            <a href="/karyawan/edit/<%= k.id %>">Edit</a> |
+            <a href="/karyawan/delete/<%= k.id %>"
+               onclick="return confirm('Yakin hapus?')">Delete</a>
+          </td>
+        </tr>
+      <% }) %>
+    <% } else { %>
       <tr>
-        <td>1</td>
-        <td>Himawan</td>
-        <td>168</td>
-        <td>80.52</td>
-        <td>1991-03-12</td>
-        <td>Not Yet</td>
-        <td>
-          <a class="btn-link" href="/edit">Update</a>
-          <a class="btn-link" href="/delete" onclick="return confirm(`apakah anda yakin mengahapus data`)">Delete</a>
-        </td>
+        <td colspan="7">Data kosong</td>
       </tr>
-    </tbody>
+    <% } %>
+  </tbody>
+
+</tbody>
+
+
   </table>
 </div>
 
