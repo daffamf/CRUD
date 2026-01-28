@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Adding Data</title>
+<title>JSON CRUD (Create, Read, Update, Delete)</title>
 
 <style>
 
@@ -83,9 +83,11 @@ input, select {
   %></td>
           <td><%= k.married %></td>
           <td>
-            <a href="/karyawan/edit/<%= k.id %>">Edit</a> |
-            <a href="/karyawan/delete/<%= k.id %>"
-               onclick="return confirm('Yakin hapus?')">Delete</a>
+         <a href="/edit/<%= k.id %>">Edit</a>
+            <a href="/delete/<%= k.id %>" 
+   onclick="return confirm('Apakah Anda yakin ingin menghapus data <%= k.name %>?')">
+   Delete
+</a>
           </td>
         </tr>
       <% }) %>
